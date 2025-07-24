@@ -57,12 +57,12 @@ const InputBlockWrapper = styled.div`
     
 `
 
-const Count = styled.p<{ $isError?:boolean, $isLimit?:boolean, $isRegularInfo?:boolean}>`
+const Count = styled.p<{ $isisError?:boolean, $isLimit?:boolean, $isRegularInfo?:boolean}>`
     font-size: 100px;
     font-weight: 700;
     color: ${theme.colors.mainBrightColor};
     text-shadow: 0 0 3px rgba(255,255,255,0.8);
-    ${props=>props.$isError && css<{ $isError?:boolean}>`
+    ${props=>props.$isisError && css<{ $isisError?:boolean}>`
         color: rgba(234, 0, 0, 0.9);
         font-size: 40px;
     `}

@@ -1,81 +1,42 @@
 import {S} from './Counter_Styles.ts';
 import {Button} from "../commom/button/Button.ts";
-import type {counterProps} from "../pages/mainPage/MainPage.tsx";
-import {useEffect} from "react";
 
 type useStateProps = {
-    counter: counterProps;
-    setCounter: (props: counterProps) => void
+    endValue: number
+    startValue: number
+    count: number
+    isEdit: boolean
+    isError: boolean
+    isLimit: boolean
+    content: string | number
+    onIncBtnHandler:()=>void
+    onResetBtnHandler:()=>void
 }
 
-export const Counter = ({counter, setCounter}: useStateProps) => {
+export const Counter = (props: useStateProps) => {
 
     const {
-        endValue,
         startValue,
-        // message,
-        // btnIncDisabled,
-        // btnResetDisabled,
         count,
-        // isLimit,
-        // isSetClicked,
-        // error
-    } = counter
-
-    useEffect(() => {
-        setCounter({
-            ...counter,
-            // isSetClicked: true,
-            // btnResetDisabled: !(count > 0)
-        });
-    }, []);
-
-    useEffect(() => {
-        if (count === endValue) {
-            setCounter({
-                ...counter,
-                // btnResetDisabled: count === startValue,
-                // btnIncDisabled: true,
-                // btnResetDisabled: false,
-                // isLimit: true
-            })
-        }
-    }, [count]);
-
-
-    const handleIncOnClick = () => {
-        // let newStateObj = {}
-        // if (count === endValue) {
-        //     newStateObj = {btnIncDisabled: true, btnResetDisabled: false, isLimit: true}
-        // } else {
-        //     newStateObj = {btnIncDisabled: false, btnResetDisabled: false, count: count + 1}
-        // }
-        // setCounter({...counter, ...newStateObj})
-    }
-    const handleResetOnClick = () => {
-        // setCounter({
-        //     ...counter,
-        //     isLimit: startValue >= endValue,
-        //     count: counter.startValue,
-        //     btnResetDisabled: true,
-        //     btnIncDisabled: false,
-        // });
-    }
-
-    // const content = error ? message.error : isSetClicked ? count : message.ok;
-    const content = count
+        isEdit,
+        onIncBtnHandler,
+        onResetBtnHandler,
+        isError,
+        isLimit,
+        content
+    } = props
 
     return (
         <S.ContentWrapper>
             <S.Display>
-                {/*$isRegularInfo={!error && !isSetClicked && btnIncDisabled}*/}
-                <S.Count $isLimit={false} $isError={false} $isRegularInfo={true}>
+                <S.Count $isLimit={isLimit} $isRegularInfo={isEdit && !isError} $isisError={isError}>
                     {content}
                 </S.Count>
             </S.Display>
             <S.ControlMenuWrapper>
-                <Button key={'inc'} disabled={false} onClick={handleIncOnClick}>Inc</Button>
-                <Button key={'reset'} disabled={false} onClick={handleResetOnClick}>Reset</Button>
+                <Button key={'inc'} disabled={isEdit || isLimit} onClick={onIncBtnHandler}>Inc</Button>
+                <Button key={'reset'} disabled={isEdit || startValue === count}
+                        onClick={onResetBtnHandler}>Reset</Button>
             </S.ControlMenuWrapper>
         </S.ContentWrapper>
     );

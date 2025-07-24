@@ -3,8 +3,8 @@ import {Button} from "../commom/button/Button.ts";
 import {type ChangeEvent} from "react";
 
 type ControllerPropsType = {
-    onInputChangeHandler: (e:ChangeEvent<HTMLInputElement>)=>void;
-    onSetBtnHandler: ()=>void;
+    onInputChangeHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+    onSetBtnHandler: () => void;
     isSetBtnDisabled: boolean
     startValue: number
     endValue: number
@@ -14,7 +14,6 @@ type ControllerPropsType = {
 export const Controller = (props: ControllerPropsType) => {
 
     const {onInputChangeHandler, onSetBtnHandler, isSetBtnDisabled, startValue, endValue} = props
-
 
 
     return (

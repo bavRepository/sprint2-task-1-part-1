@@ -31,15 +31,16 @@ export const useCounterStorage = () => {
     }
 
     const changingStartOrEndValue: changingStartOrEndValueType = (e) => {
-        const target = e.currentTarget
-        setCounter({...counter, [target.id]: Number(target.value), isEdit: true,})
+        setCounter({...counter, [e.currentTarget.id]: Number(e.currentTarget), isEdit: true,})
     }
 
     ////////////////  Counter handle  //////////////////////
     /////
 
     const setNewIncrementValue = () => {
-        setCounter({...counter, count: count + 1})
+        setCounter((prev) => {
+            return {...counter, count: prev?.count + 1}
+        })
     }
 
     const resetCountToDefault = () => {

@@ -9,7 +9,7 @@ export type counterProps = {
     isEdit: boolean;
 }
 
-export const useCounterStorage = () => {
+export const useCounterHandler = () => {
 
     const [counter, setCounter] = useState<counterProps>({
         count: 0,

@@ -1,7 +1,7 @@
 import {MainPageStyled} from './MainPage_styles.ts';
 import {Counter} from "../../counter/Counter.tsx";
 import {Controller} from "../../controller/Controller.tsx";
-import {useCounterStorage} from "../../../hooks/useCounterStorage.tsx";
+import {useCounterHandler} from "../../../hooks/useCounterHandler.tsx";
 
 export const MainPage = () => {
 
@@ -19,7 +19,7 @@ export const MainPage = () => {
         isError,
         isLimit,
         content
-    } = useCounterStorage()
+    } = useCounterHandler()
 
     ////////////////  COUNTER & CONTROLLER PROPS  //////////////////////
     /////

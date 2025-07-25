@@ -9,8 +9,8 @@ type useStateProps = {
     isError: boolean
     isLimit: boolean
     content: string | number
-    onIncBtnHandler:()=>void
-    onResetBtnHandler:()=>void
+    setNewIncrementValue:()=>void
+    resetCountToDefault:()=>void
 }
 
 export const Counter = (props: useStateProps) => {
@@ -19,8 +19,8 @@ export const Counter = (props: useStateProps) => {
         startValue,
         count,
         isEdit,
-        onIncBtnHandler,
-        onResetBtnHandler,
+        setNewIncrementValue,
+        resetCountToDefault,
         isError,
         isLimit,
         content
@@ -34,9 +34,9 @@ export const Counter = (props: useStateProps) => {
                 </S.Count>
             </S.Display>
             <S.ControlMenuWrapper>
-                <Button key={'inc'} disabled={isEdit || isLimit} onClick={onIncBtnHandler}>Inc</Button>
+                <Button key={'inc'} disabled={isEdit || isLimit} onClick={setNewIncrementValue}>Inc</Button>
                 <Button key={'reset'} disabled={isEdit || startValue === count}
-                        onClick={onResetBtnHandler}>Reset</Button>
+                        onClick={resetCountToDefault}>Reset</Button>
             </S.ControlMenuWrapper>
         </S.ContentWrapper>
     );

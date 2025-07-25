@@ -11,11 +11,11 @@ export const MainPage = () => {
         endValue,
         count,
         isEdit,
-        onIncBtnHandler,
-        onInputChangeHandler,
-        onSetBtnHandler,
+        setNewIncrementValue,
+        changingStartOrEndValue,
+        setStartAndEndValue,
         isSetBtnDisabled,
-        onResetBtnHandler,
+        resetCountToDefault,
         isError,
         isLimit,
         content
@@ -25,8 +25,8 @@ export const MainPage = () => {
     /////
 
     const ControllerPropsObj = {
-        onInputChangeHandler,
-        onSetBtnHandler,
+        changingStartOrEndValue,
+        setStartAndEndValue,
         isSetBtnDisabled,
         startValue,
         endValue
@@ -40,8 +40,8 @@ export const MainPage = () => {
         isError,
         isLimit,
         content,
-        onIncBtnHandler,
-        onResetBtnHandler
+        setNewIncrementValue,
+        resetCountToDefault
     }
 
     return (

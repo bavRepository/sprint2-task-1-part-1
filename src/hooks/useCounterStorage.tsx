@@ -1,6 +1,6 @@
 import {type ChangeEvent, useState} from "react"
 
-export type onInputChangeHandlerType = (e: ChangeEvent<HTMLInputElement>) => void;
+export type changingStartOrEndValueType = (e: ChangeEvent<HTMLInputElement>) => void;
 
 export type counterProps = {
     count: number;
@@ -24,14 +24,13 @@ export const useCounterStorage = () => {
     ////////////////  Controller handle  //////////////////////
     /////
 
-    const onSetBtnHandler = () => {
+    const setStartAndEndValue = () => {
         setCounter({
-            ...counter, count: counter.startValue,
-            isEdit: false,
+            ...counter, count: counter.startValue,isEdit: false,
         })
     }
 
-    const onInputChangeHandler: onInputChangeHandlerType = (e) => {
+    const changingStartOrEndValue: changingStartOrEndValueType = (e) => {
         const target = e.currentTarget
         setCounter({...counter, [target.id]: Number(target.value), isEdit: true,})
     }
@@ -39,11 +38,11 @@ export const useCounterStorage = () => {
     ////////////////  Counter handle  //////////////////////
     /////
 
-    const onIncBtnHandler = () => {
+    const setNewIncrementValue = () => {
         setCounter({...counter, count: count + 1})
     }
 
-    const onResetBtnHandler = () => {
+    const resetCountToDefault = () => {
         setCounter({...counter, count: counter.startValue});
     }
 
@@ -64,5 +63,5 @@ export const useCounterStorage = () => {
 
     const content = isError ? message.isError : isEdit ? message.ok : count;
 
-    return { onSetBtnHandler, onInputChangeHandler, onIncBtnHandler, onResetBtnHandler, isSetBtnDisabled, message, isError, isLimit, content, startValue, count, isEdit, endValue }
+    return { setStartAndEndValue, changingStartOrEndValue, setNewIncrementValue, resetCountToDefault, isSetBtnDisabled, message, isError, isLimit, content, startValue, count, isEdit, endValue }
 }

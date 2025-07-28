@@ -31,7 +31,7 @@ export const useCounterHandler = () => {
     }
 
     const changingStartOrEndValue: changingStartOrEndValueType = (e) => {
-        setCounter({...counter, [e.currentTarget.id]: Number(e.currentTarget), isEdit: true,})
+        setCounter({...counter, [e.currentTarget.id]: Number(e.currentTarget.value), isEdit: true,})
     }
 
     ////////////////  Counter handle  //////////////////////

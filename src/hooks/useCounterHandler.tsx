@@ -1,21 +1,29 @@
 import {type ChangeEvent, useEffect, useState} from "react"
 
-export type changingStartOrEndValueType = (e: ChangeEvent<HTMLInputElement>) => void;
-
-const LOCAL_STORAGE_KEY = 'counter'
-
 type counterProps = {
     count: number
     startValue: number
     endValue: number
     isEdit: boolean
 }
+
+const updateLSCounterData = (key:string, dataCounterObj:counterProps) => {
+    localStorage.setItem(key, JSON.stringify(dataCounterObj))
+}
+
+export type changingStartOrEndValueType = (e: ChangeEvent<HTMLInputElement>) => void;
+
+const LOCAL_STORAGE_KEY = 'counter'
+
+
 const getCounterFromLS = (initialData: counterProps): counterProps => {
     let initialCounterData: counterProps = initialData
     const storedCounter = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (storedCounter) {
         const parsedCounter: counterProps = JSON.parse(storedCounter)
         initialCounterData = { ...parsedCounter }
+    }else {
+        updateLSCounterData(LOCAL_STORAGE_KEY, initialData)
     }
     return initialCounterData
 }
@@ -32,7 +40,7 @@ export const useCounterHandler = () => {
     const [counter, setCounter] = useState<counterProps>(initialCounterData)
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(counter))
+        updateLSCounterData(LOCAL_STORAGE_KEY, counter)
     }, [counter])
 
     const { count, startValue, endValue, isEdit } = counter

@@ -18,7 +18,7 @@ const initialObjState: CounterProps = {
 const initialCounterData = getCounterFromLS(initialObjState)
 
 export const setStartValueAC = createAction<{ startValue: number }>('counter/setCounterValues')
-export const changeStartEndValuesAC = createAction<{ inputId: string; newCount: number }>(
+export const changeStartEndValuesAC = createAction<{ inputId: 'startValue' | 'endValue'; newCount: number }>(
   'counter/changeStartEndValues',
 )
 export const setNewIncrementValueAC = createAction('counter/setNewIncrementValue')

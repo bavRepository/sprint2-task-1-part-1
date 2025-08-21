@@ -12,8 +12,6 @@ export const getCounterFromLS = (initialData: CounterProps): CounterProps => {
   if (storedCounter) {
     const parsedCounter: CounterProps = JSON.parse(storedCounter)
     initialCounterData = { ...parsedCounter }
-  } else {
-    updateLSCounterData(initialData)
   }
   return initialCounterData
 }

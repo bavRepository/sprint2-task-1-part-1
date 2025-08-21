@@ -1,6 +1,6 @@
 import { S } from '../counter/Counter_Styles.ts'
 import { Button } from '../common/button/Button.ts'
-import { type ChangeEvent, useEffect } from 'react'
+import { type ChangeEvent } from 'react'
 import { useAppDispatch } from '../../common/hooks/useAppDispatch.ts'
 import { useAppSelector } from '../../common/hooks/useAppSelector.ts'
 import { counterSelector } from '../../model/counter-selector.ts'
@@ -16,16 +16,13 @@ export const Controller = () => {
 
   const { startValue, endValue } = counter
 
-  useEffect(() => {
-    updateLSCounterData(counter)
-  }, [startValue, endValue])
-
   const setUserValuesOnBtn = () => {
     dispatch(setStartValueAC({ startValue }))
+    updateLSCounterData({ ...counter, startValue, endValue, isEdit: false })
   }
 
   const changeValuesHandler: changeValuesHandlerType = (e) => {
-    const inputId = e.currentTarget.id,
+    const inputId = e.currentTarget.dataset.inpname as 'startValue' | 'endValue',
       newCount = Number(e.currentTarget.value)
     dispatch(changeStartEndValuesAC({ inputId, newCount }))
   }
@@ -38,11 +35,11 @@ export const Controller = () => {
       <S.Display>
         <S.InputBlockWrapper key={'endValue'}>
           <label htmlFor={'endValue'}>Max value</label>
-          <input type={'number'} id={'endValue'} onChange={changeValuesHandler} value={endValue} />
+          <input type={'number'} data-inpname={'endValue'} onChange={changeValuesHandler} value={endValue} />
         </S.InputBlockWrapper>
         <S.InputBlockWrapper key={'startValue'}>
           <label htmlFor={'startValue'}>Start value</label>
-          <input type={'number'} id={'startValue'} onChange={changeValuesHandler} value={startValue} />
+          <input type={'number'} data-inpname={'startValue'} onChange={changeValuesHandler} value={startValue} />
         </S.InputBlockWrapper>
       </S.Display>
       <S.ControlMenuWrapper>

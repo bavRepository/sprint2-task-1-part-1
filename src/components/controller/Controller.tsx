@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../common/hooks/useAppDispatch.ts'
 import { useAppSelector } from '../../common/hooks/useAppSelector.ts'
 import { counterSelector } from '../../model/counter-selector.ts'
 import { changeStartEndValuesAC, setStartValueAC } from '../../model/counter-reducer.ts'
-import { getStateOfSetBtn } from '../../common/hooks/useCounterHandler.tsx'
+import { getStateOfSetBtn } from '../../common/utils/renderLogicComponents.tsx'
 import { updateLSCounterData } from '../../common/localStorage/localStorage.ts'
 
 type changeValuesHandlerType = (e: ChangeEvent<HTMLInputElement>) => void

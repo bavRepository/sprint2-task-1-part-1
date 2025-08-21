@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../common/hooks/useAppDispatch.ts'
 import { useAppSelector } from '../../common/hooks/useAppSelector.ts'
 import { counterSelector } from '../../model/counter-selector.ts'
 import { resetCountToDefaultAC, setNewIncrementValueAC } from '../../model/counter-reducer.ts'
-import { getCounterLogicObj } from '../../common/hooks/useCounterHandler.tsx'
+import { getCounterLogicObj } from '../../common/utils/renderLogicComponents.tsx'
 import { updateLSCounterData } from '../../common/localStorage/localStorage.ts'
 import { useEffect } from 'react'
 

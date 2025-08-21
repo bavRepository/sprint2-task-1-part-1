@@ -1,5 +1,4 @@
 import { createAction, createReducer } from '@reduxjs/toolkit'
-import { getCounterLogicObj } from '../common/hooks/useCounterHandler.tsx'
 import { getCounterFromLS } from '../common/localStorage/localStorage.ts'
 
 export type CounterProps = {
